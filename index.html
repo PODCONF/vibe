@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary: #00A0B0;    /* Teal from Jazz cup */
@@ -204,6 +205,95 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 40px auto;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: 'ALPHA PROTOCOL';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-image::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .product-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: 'PRODUCT SHOT';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
         @media (max-width: 768px) {
             .logo {
                 font-size: 2.5rem;
@@ -216,47 +306,75 @@
             .features {
                 grid-template-columns: 1fr;
             }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .feature-image {
+                height: 150px;
+            }
+            
+            .product-image {
+                height: 250px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <div class="container">
-            <div class="logo">ALPHA PROTOCOL</div>
-            <div class="tagline">UNLEASH YOUR ULTIMATE POTENTIAL</div>
-            <a href="#buy" class="cta-button">BUY NOW</a>
-        </div>
-    </div>
-
     <div class="container">
-        <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=ALPHA+PROTOCOL" alt="Alpha Protocol Supplement" class="product-image">
-    </div>
-
-    <div class="features">
-        <div class="feature">
-            <div class="feature-icon">⚡</div>
-            <div class="feature-title">MAXIMUM ENERGY</div>
-            <p>Experience unprecedented energy levels with our advanced formula. Feel the power coursing through your veins.</p>
+        <div class="hero">
+            <h1 class="logo">ALPHA PROTOCOL</h1>
+            <p class="tagline">UNLEASH YOUR INNER BEAST</p>
+            <div class="hero-image"></div>
+            <a href="#" class="cta-button">BUY NOW</a>
         </div>
 
-        <div class="feature">
-            <div class="feature-icon">💪</div>
-            <div class="feature-title">EXTREME FOCUS</div>
-            <p>Sharpen your mind and enhance your concentration. Stay locked in during your most intense workouts.</p>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-image" data-text="MAXIMUM ENERGY"></div>
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="feature-title">Maximum Energy</h3>
+                <p class="feature-description">Experience explosive power and unstoppable energy with our advanced formula.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-image" data-text="EXTREME FOCUS"></div>
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="feature-title">Extreme Focus</h3>
+                <p class="feature-description">Sharpen your mind and maintain laser-like concentration during intense workouts.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-image" data-text="UNSTOPPABLE DRIVE"></div>
+                <div class="feature-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3 class="feature-title">Unstoppable Drive</h3>
+                <p class="feature-description">Push past your limits and achieve new levels of performance.</p>
+            </div>
         </div>
 
-        <div class="feature">
-            <div class="feature-icon">🔥</div>
-            <div class="feature-title">UNSTOPPABLE DRIVE</div>
-            <p>Push past your limits with enhanced motivation and drive. Break through plateaus like never before.</p>
+        <div class="product-showcase">
+            <div class="product-card">
+                <div class="product-image"></div>
+                <h3>ALPHA PROTOCOL</h3>
+                <p>Premium Pre-Workout Formula</p>
+                <a href="#" class="cta-button">SHOP NOW</a>
+            </div>
+            <div class="product-card">
+                <div class="product-image"></div>
+                <h3>ALPHA PROTOCOL MAX</h3>
+                <p>Maximum Strength Formula</p>
+                <a href="#" class="cta-button">SHOP NOW</a>
+            </div>
         </div>
-    </div>
 
-    <div class="container">
-        <a href="#buy" class="cta-button">GET YOURS NOW</a>
-        
         <div class="warning">
-            ⚠️ WARNING: This product contains powerful ingredients. Use as directed. Not for the faint of heart.
+            <i class="fas fa-exclamation-triangle"></i>
+            WARNING: This product contains powerful ingredients. Consult your healthcare provider before use.
         </div>
     </div>
 </body>
