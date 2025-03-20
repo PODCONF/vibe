@@ -41,15 +41,35 @@
             display: flex;
             justify-content: space-between;
             padding: 20px;
-            overflow-x: auto;
-            white-space: nowrap;
+            gap: 40px;
+        }
+
+        .division {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .division-title {
+            color: #ff0000;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            text-transform: uppercase;
         }
 
         .round {
             display: flex;
             flex-direction: column;
-            margin: 0 20px;
-            min-width: 200px;
+            margin: 0 10px;
+            min-width: 180px;
+        }
+
+        .round-title {
+            color: #ff0000;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.1em;
         }
 
         .match {
@@ -81,22 +101,15 @@
             background-color: #ff0000;
         }
 
-        .match:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            right: -20px;
-            top: 50%;
-            width: 20px;
-            height: 1px;
-            background-color: #ff0000;
-        }
-
         .team {
             padding: 5px;
             margin: 2px 0;
             border: 1px solid #ff0000;
             cursor: pointer;
             transition: background-color 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .team:hover {
@@ -104,36 +117,52 @@
             color: #000;
         }
 
-        .round-title {
+        .seed {
             color: #ff0000;
+            font-weight: bold;
+        }
+
+        .winner {
+            background-color: #ff0000;
+            color: #000;
+        }
+
+        .winner .seed {
+            color: #000;
+        }
+
+        .final-four {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            gap: 40px;
+        }
+
+        .championship {
             text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.2em;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 1200px) {
+            .bracket-container {
+                flex-direction: column;
+            }
+
+            .division {
+                margin-bottom: 40px;
+            }
         }
 
         @media (max-width: 768px) {
-            .bracket-container {
-                padding: 10px;
-            }
-
             .round {
-                margin: 0 10px;
                 min-width: 150px;
-            }
-
-            .match {
-                min-height: 50px;
             }
 
             .team {
                 font-size: 0.9em;
                 padding: 3px;
             }
-        }
-
-        .winner {
-            background-color: #ff0000;
-            color: #000;
         }
     </style>
 </head>
@@ -146,81 +175,161 @@
     </nav>
 
     <div class="bracket-container">
-        <!-- Round of 64 -->
-        <div class="round">
-            <div class="round-title">Round of 64</div>
-            <div class="match">
-                <div class="team">Team 1</div>
-                <div class="team">Team 2</div>
-            </div>
-            <div class="match">
-                <div class="team">Team 3</div>
-                <div class="team">Team 4</div>
-            </div>
-            <!-- Add more matches for Round of 64 -->
-        </div>
-
-        <!-- Round of 32 -->
-        <div class="round">
-            <div class="round-title">Round of 32</div>
-            <div class="match">
-                <div class="team">Winner 1</div>
-                <div class="team">Winner 2</div>
-            </div>
-            <div class="match">
-                <div class="team">Winner 3</div>
-                <div class="team">Winner 4</div>
-            </div>
-            <!-- Add more matches for Round of 32 -->
-        </div>
-
-        <!-- Sweet 16 -->
-        <div class="round">
-            <div class="round-title">Sweet 16</div>
-            <div class="match">
-                <div class="team">Winner 5</div>
-                <div class="team">Winner 6</div>
-            </div>
-            <div class="match">
-                <div class="team">Winner 7</div>
-                <div class="team">Winner 8</div>
-            </div>
-            <!-- Add more matches for Sweet 16 -->
-        </div>
-
-        <!-- Elite 8 -->
-        <div class="round">
-            <div class="round-title">Elite 8</div>
-            <div class="match">
-                <div class="team">Winner 9</div>
-                <div class="team">Winner 10</div>
-            </div>
-            <div class="match">
-                <div class="team">Winner 11</div>
-                <div class="team">Winner 12</div>
-            </div>
-            <!-- Add more matches for Elite 8 -->
-        </div>
-
-        <!-- Final Four -->
-        <div class="round">
-            <div class="round-title">Final Four</div>
-            <div class="match">
-                <div class="team">Winner 13</div>
-                <div class="team">Winner 14</div>
-            </div>
-            <div class="match">
-                <div class="team">Winner 15</div>
-                <div class="team">Winner 16</div>
+        <!-- Left Side -->
+        <div class="division">
+            <div class="division-title">East Region</div>
+            <div class="round">
+                <div class="round-title">Round of 64</div>
+                <div class="match">
+                    <div class="team"><span>Team 1</span><span class="seed">1</span></div>
+                    <div class="team"><span>Team 16</span><span class="seed">16</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 8</span><span class="seed">8</span></div>
+                    <div class="team"><span>Team 9</span><span class="seed">9</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 5</span><span class="seed">5</span></div>
+                    <div class="team"><span>Team 12</span><span class="seed">12</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 4</span><span class="seed">4</span></div>
+                    <div class="team"><span>Team 13</span><span class="seed">13</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 6</span><span class="seed">6</span></div>
+                    <div class="team"><span>Team 11</span><span class="seed">11</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 3</span><span class="seed">3</span></div>
+                    <div class="team"><span>Team 14</span><span class="seed">14</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 7</span><span class="seed">7</span></div>
+                    <div class="team"><span>Team 10</span><span class="seed">10</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 2</span><span class="seed">2</span></div>
+                    <div class="team"><span>Team 15</span><span class="seed">15</span></div>
+                </div>
             </div>
         </div>
 
-        <!-- Championship -->
-        <div class="round">
-            <div class="round-title">Championship</div>
-            <div class="match">
-                <div class="team">Finalist 1</div>
-                <div class="team">Finalist 2</div>
+        <div class="division">
+            <div class="division-title">West Region</div>
+            <div class="round">
+                <div class="round-title">Round of 64</div>
+                <div class="match">
+                    <div class="team"><span>Team 1</span><span class="seed">1</span></div>
+                    <div class="team"><span>Team 16</span><span class="seed">16</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 8</span><span class="seed">8</span></div>
+                    <div class="team"><span>Team 9</span><span class="seed">9</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 5</span><span class="seed">5</span></div>
+                    <div class="team"><span>Team 12</span><span class="seed">12</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 4</span><span class="seed">4</span></div>
+                    <div class="team"><span>Team 13</span><span class="seed">13</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 6</span><span class="seed">6</span></div>
+                    <div class="team"><span>Team 11</span><span class="seed">11</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 3</span><span class="seed">3</span></div>
+                    <div class="team"><span>Team 14</span><span class="seed">14</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 7</span><span class="seed">7</span></div>
+                    <div class="team"><span>Team 10</span><span class="seed">10</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 2</span><span class="seed">2</span></div>
+                    <div class="team"><span>Team 15</span><span class="seed">15</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side -->
+        <div class="division">
+            <div class="division-title">South Region</div>
+            <div class="round">
+                <div class="round-title">Round of 64</div>
+                <div class="match">
+                    <div class="team"><span>Team 1</span><span class="seed">1</span></div>
+                    <div class="team"><span>Team 16</span><span class="seed">16</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 8</span><span class="seed">8</span></div>
+                    <div class="team"><span>Team 9</span><span class="seed">9</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 5</span><span class="seed">5</span></div>
+                    <div class="team"><span>Team 12</span><span class="seed">12</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 4</span><span class="seed">4</span></div>
+                    <div class="team"><span>Team 13</span><span class="seed">13</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 6</span><span class="seed">6</span></div>
+                    <div class="team"><span>Team 11</span><span class="seed">11</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 3</span><span class="seed">3</span></div>
+                    <div class="team"><span>Team 14</span><span class="seed">14</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 7</span><span class="seed">7</span></div>
+                    <div class="team"><span>Team 10</span><span class="seed">10</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 2</span><span class="seed">2</span></div>
+                    <div class="team"><span>Team 15</span><span class="seed">15</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="division">
+            <div class="division-title">Midwest Region</div>
+            <div class="round">
+                <div class="round-title">Round of 64</div>
+                <div class="match">
+                    <div class="team"><span>Team 1</span><span class="seed">1</span></div>
+                    <div class="team"><span>Team 16</span><span class="seed">16</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 8</span><span class="seed">8</span></div>
+                    <div class="team"><span>Team 9</span><span class="seed">9</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 5</span><span class="seed">5</span></div>
+                    <div class="team"><span>Team 12</span><span class="seed">12</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 4</span><span class="seed">4</span></div>
+                    <div class="team"><span>Team 13</span><span class="seed">13</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 6</span><span class="seed">6</span></div>
+                    <div class="team"><span>Team 11</span><span class="seed">11</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 3</span><span class="seed">3</span></div>
+                    <div class="team"><span>Team 14</span><span class="seed">14</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 7</span><span class="seed">7</span></div>
+                    <div class="team"><span>Team 10</span><span class="seed">10</span></div>
+                </div>
+                <div class="match">
+                    <div class="team"><span>Team 2</span><span class="seed">2</span></div>
+                    <div class="team"><span>Team 15</span><span class="seed">15</span></div>
+                </div>
             </div>
         </div>
     </div>
