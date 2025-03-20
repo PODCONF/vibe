@@ -9,31 +9,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #FF3366;
-            --secondary: #00FF99;
-            --accent: #3366FF;
-            --dark: #1a1a1a;
-            --light: #ffffff;
+            --primary: #00A0B0;    /* Teal from Jazz cup */
+            --secondary: #9B4F96;  /* Purple from Jazz cup */
+            --accent: #FF69B4;     /* Pink from Jazz cup */
+            --background: #000000;
+            --text: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
 
         body {
-            background-color: var(--dark);
-            color: var(--light);
-            font-family: 'Share Tech Mono', monospace;
-            margin: 0;
-            padding: 0;
+            background-color: var(--background);
+            color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            text-align: center;
+            position: relative;
         }
 
         .hero {
-            background: linear-gradient(135deg, var(--dark), #2a2a2a);
+            text-align: center;
             padding: 60px 20px;
             position: relative;
             overflow: hidden;
@@ -46,112 +51,170 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(255, 51, 102, 0.1) 0px,
-                rgba(255, 51, 102, 0.1) 1px,
-                transparent 1px,
-                transparent 10px
-            );
-            pointer-events: none;
+            background: linear-gradient(45deg, 
+                var(--primary) 0%, 
+                var(--secondary) 50%, 
+                var(--accent) 100%);
+            opacity: 0.1;
+            z-index: -1;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3em;
-            color: var(--primary);
-            text-shadow: 0 0 10px rgba(255, 51, 102, 0.5);
+            font-size: 3.5rem;
+            font-weight: bold;
             margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .tagline {
-            font-size: 1.5em;
-            color: var(--secondary);
+            font-size: 1.5rem;
             margin-bottom: 40px;
+            color: var(--text);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .cta-button {
             display: inline-block;
             padding: 15px 40px;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            color: var(--light);
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 1.2em;
+            font-size: 1.2rem;
             font-weight: bold;
             text-transform: uppercase;
-            transition: transform 0.3s, box-shadow 0.3s;
-            margin: 20px 0;
+            color: var(--text);
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            margin: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            padding: 60px 20px;
+            padding: 40px 20px;
         }
 
         .feature {
-            background: rgba(255, 255, 255, 0.05);
+            text-align: center;
             padding: 30px;
-            border-radius: 10px;
-            border: 1px solid var(--primary);
-            transition: transform 0.3s;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                var(--primary) 0%, 
+                var(--secondary) 50%, 
+                var(--accent) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
         }
 
         .feature:hover {
             transform: translateY(-5px);
         }
 
+        .feature:hover::before {
+            opacity: 0.1;
+        }
+
         .feature-icon {
-            font-size: 2.5em;
-            color: var(--secondary);
+            font-size: 2.5rem;
             margin-bottom: 20px;
+            color: var(--accent);
         }
 
         .feature-title {
-            color: var(--primary);
-            font-size: 1.5em;
+            font-size: 1.5rem;
             margin-bottom: 15px;
+            color: var(--text);
         }
 
-        .product-image {
-            max-width: 100%;
-            height: auto;
-            margin: 40px 0;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 51, 102, 0.2);
+        .feature-description {
+            color: var(--text);
+            opacity: 0.9;
         }
 
         .warning {
-            color: var(--primary);
-            font-size: 0.9em;
-            margin-top: 40px;
+            text-align: center;
             padding: 20px;
-            border: 1px solid var(--primary);
-            border-radius: 5px;
+            margin: 40px auto;
+            max-width: 600px;
+            background: rgba(255,0,0,0.1);
+            border: 1px solid rgba(255,0,0,0.3);
+            border-radius: 10px;
+            color: var(--text);
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 400px;
+            margin: 40px auto;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         @media (max-width: 768px) {
             .logo {
-                font-size: 2em;
+                font-size: 2.5rem;
             }
-
+            
             .tagline {
-                font-size: 1.2em;
+                font-size: 1.2rem;
             }
-
+            
             .features {
                 grid-template-columns: 1fr;
-            }
-
-            .container {
-                padding: 10px;
             }
         }
     </style>
