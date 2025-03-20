@@ -3,347 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>March Madness Bracket</title>
+    <title>Alpha Protocol Supplements</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #FF3366;
+            --secondary: #00FF99;
+            --accent: #3366FF;
+            --dark: #1a1a1a;
+            --light: #ffffff;
+        }
+
         body {
-            background-color: #000;
-            color: #fff;
+            background-color: var(--dark);
+            color: var(--light);
             font-family: 'Share Tech Mono', monospace;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             line-height: 1.6;
-            overflow-x: auto;
         }
 
-        nav {
-            background-color: #1a1a1a;
-            padding: 15px;
-            margin-bottom: 30px;
-            border: 1px solid #ff0000;
-        }
-
-        nav a {
-            color: #ff0000;
-            text-decoration: none;
-            margin-right: 20px;
-            font-size: 1.2em;
-        }
-
-        nav a:hover {
-            color: #ff4444;
-            text-decoration: underline;
-        }
-
-        .bracket-container {
-            display: flex;
-            justify-content: space-between;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
-            gap: 40px;
-        }
-
-        .division {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .division-title {
-            color: #ff0000;
             text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.4em;
-            text-transform: uppercase;
         }
 
-        .round {
-            display: flex;
-            flex-direction: column;
-            margin: 0 10px;
-            min-width: 180px;
-        }
-
-        .round-title {
-            color: #ff0000;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.1em;
-        }
-
-        .match {
-            background-color: #1a1a1a;
-            border: 1px solid #ff0000;
-            margin: 10px 0;
-            padding: 10px;
+        .hero {
+            background: linear-gradient(135deg, var(--dark), #2a2a2a);
+            padding: 60px 20px;
             position: relative;
-            min-height: 60px;
+            overflow: hidden;
         }
 
-        .match::after {
+        .hero::before {
             content: '';
             position: absolute;
-            right: -20px;
-            top: 50%;
-            width: 20px;
-            height: 1px;
-            background-color: #ff0000;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 51, 102, 0.1) 0px,
+                rgba(255, 51, 102, 0.1) 1px,
+                transparent 1px,
+                transparent 10px
+            );
+            pointer-events: none;
         }
 
-        .match:not(:last-child)::before {
-            content: '';
-            position: absolute;
-            right: -20px;
-            top: 50%;
-            width: 20px;
-            height: 1px;
-            background-color: #ff0000;
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3em;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(255, 51, 102, 0.5);
+            margin-bottom: 20px;
         }
 
-        .team {
-            padding: 5px;
-            margin: 2px 0;
-            border: 1px solid #ff0000;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .tagline {
+            font-size: 1.5em;
+            color: var(--secondary);
+            margin-bottom: 40px;
         }
 
-        .team:hover {
-            background-color: #ff0000;
-            color: #000;
-        }
-
-        .seed {
-            color: #ff0000;
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2em;
             font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 20px 0;
         }
 
-        .winner {
-            background-color: #ff0000;
-            color: #000;
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
         }
 
-        .winner .seed {
-            color: #000;
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 60px 20px;
         }
 
-        .final-four {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .feature {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            color: var(--primary);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 51, 102, 0.2);
+        }
+
+        .warning {
+            color: var(--primary);
+            font-size: 0.9em;
             margin-top: 40px;
-            gap: 40px;
-        }
-
-        .championship {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 1200px) {
-            .bracket-container {
-                flex-direction: column;
-            }
-
-            .division {
-                margin-bottom: 40px;
-            }
+            padding: 20px;
+            border: 1px solid var(--primary);
+            border-radius: 5px;
         }
 
         @media (max-width: 768px) {
-            .round {
-                min-width: 150px;
+            .logo {
+                font-size: 2em;
             }
 
-            .team {
-                font-size: 0.9em;
-                padding: 3px;
+            .tagline {
+                font-size: 1.2em;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="page1.html">Page 1</a>
-        <a href="page2.html">Page 2</a>
-        <a href="page3.html">Page 3</a>
-    </nav>
-
-    <div class="bracket-container">
-        <!-- Left Side -->
-        <div class="division">
-            <div class="division-title">East Region</div>
-            <div class="round">
-                <div class="round-title">Round of 64</div>
-                <div class="match">
-                    <div class="team"><span>Team 1</span><span class="seed">1</span></div>
-                    <div class="team"><span>Team 16</span><span class="seed">16</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 8</span><span class="seed">8</span></div>
-                    <div class="team"><span>Team 9</span><span class="seed">9</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 5</span><span class="seed">5</span></div>
-                    <div class="team"><span>Team 12</span><span class="seed">12</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 4</span><span class="seed">4</span></div>
-                    <div class="team"><span>Team 13</span><span class="seed">13</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 6</span><span class="seed">6</span></div>
-                    <div class="team"><span>Team 11</span><span class="seed">11</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 3</span><span class="seed">3</span></div>
-                    <div class="team"><span>Team 14</span><span class="seed">14</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 7</span><span class="seed">7</span></div>
-                    <div class="team"><span>Team 10</span><span class="seed">10</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 2</span><span class="seed">2</span></div>
-                    <div class="team"><span>Team 15</span><span class="seed">15</span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="division">
-            <div class="division-title">West Region</div>
-            <div class="round">
-                <div class="round-title">Round of 64</div>
-                <div class="match">
-                    <div class="team"><span>Team 1</span><span class="seed">1</span></div>
-                    <div class="team"><span>Team 16</span><span class="seed">16</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 8</span><span class="seed">8</span></div>
-                    <div class="team"><span>Team 9</span><span class="seed">9</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 5</span><span class="seed">5</span></div>
-                    <div class="team"><span>Team 12</span><span class="seed">12</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 4</span><span class="seed">4</span></div>
-                    <div class="team"><span>Team 13</span><span class="seed">13</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 6</span><span class="seed">6</span></div>
-                    <div class="team"><span>Team 11</span><span class="seed">11</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 3</span><span class="seed">3</span></div>
-                    <div class="team"><span>Team 14</span><span class="seed">14</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 7</span><span class="seed">7</span></div>
-                    <div class="team"><span>Team 10</span><span class="seed">10</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 2</span><span class="seed">2</span></div>
-                    <div class="team"><span>Team 15</span><span class="seed">15</span></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Right Side -->
-        <div class="division">
-            <div class="division-title">South Region</div>
-            <div class="round">
-                <div class="round-title">Round of 64</div>
-                <div class="match">
-                    <div class="team"><span>Team 1</span><span class="seed">1</span></div>
-                    <div class="team"><span>Team 16</span><span class="seed">16</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 8</span><span class="seed">8</span></div>
-                    <div class="team"><span>Team 9</span><span class="seed">9</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 5</span><span class="seed">5</span></div>
-                    <div class="team"><span>Team 12</span><span class="seed">12</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 4</span><span class="seed">4</span></div>
-                    <div class="team"><span>Team 13</span><span class="seed">13</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 6</span><span class="seed">6</span></div>
-                    <div class="team"><span>Team 11</span><span class="seed">11</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 3</span><span class="seed">3</span></div>
-                    <div class="team"><span>Team 14</span><span class="seed">14</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 7</span><span class="seed">7</span></div>
-                    <div class="team"><span>Team 10</span><span class="seed">10</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 2</span><span class="seed">2</span></div>
-                    <div class="team"><span>Team 15</span><span class="seed">15</span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="division">
-            <div class="division-title">Midwest Region</div>
-            <div class="round">
-                <div class="round-title">Round of 64</div>
-                <div class="match">
-                    <div class="team"><span>Team 1</span><span class="seed">1</span></div>
-                    <div class="team"><span>Team 16</span><span class="seed">16</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 8</span><span class="seed">8</span></div>
-                    <div class="team"><span>Team 9</span><span class="seed">9</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 5</span><span class="seed">5</span></div>
-                    <div class="team"><span>Team 12</span><span class="seed">12</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 4</span><span class="seed">4</span></div>
-                    <div class="team"><span>Team 13</span><span class="seed">13</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 6</span><span class="seed">6</span></div>
-                    <div class="team"><span>Team 11</span><span class="seed">11</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 3</span><span class="seed">3</span></div>
-                    <div class="team"><span>Team 14</span><span class="seed">14</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 7</span><span class="seed">7</span></div>
-                    <div class="team"><span>Team 10</span><span class="seed">10</span></div>
-                </div>
-                <div class="match">
-                    <div class="team"><span>Team 2</span><span class="seed">2</span></div>
-                    <div class="team"><span>Team 15</span><span class="seed">15</span></div>
-                </div>
-            </div>
+    <div class="hero">
+        <div class="container">
+            <div class="logo">ALPHA PROTOCOL</div>
+            <div class="tagline">UNLEASH YOUR ULTIMATE POTENTIAL</div>
+            <a href="#buy" class="cta-button">BUY NOW</a>
         </div>
     </div>
 
-    <script>
-        // Add click functionality to teams
-        document.querySelectorAll('.team').forEach(team => {
-            team.addEventListener('click', function() {
-                // Remove winner class from all teams in the same match
-                this.parentElement.querySelectorAll('.team').forEach(t => t.classList.remove('winner'));
-                // Add winner class to clicked team
-                this.classList.add('winner');
-            });
-        });
-    </script>
+    <div class="container">
+        <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=ALPHA+PROTOCOL" alt="Alpha Protocol Supplement" class="product-image">
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-title">MAXIMUM ENERGY</div>
+            <p>Experience unprecedented energy levels with our advanced formula. Feel the power coursing through your veins.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">💪</div>
+            <div class="feature-title">EXTREME FOCUS</div>
+            <p>Sharpen your mind and enhance your concentration. Stay locked in during your most intense workouts.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🔥</div>
+            <div class="feature-title">UNSTOPPABLE DRIVE</div>
+            <p>Push past your limits with enhanced motivation and drive. Break through plateaus like never before.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="#buy" class="cta-button">GET YOURS NOW</a>
+        
+        <div class="warning">
+            ⚠️ WARNING: This product contains powerful ingredients. Use as directed. Not for the faint of heart.
+        </div>
+    </div>
 </body>
 </html> 
