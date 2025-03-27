@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUITCOINERS</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>PODCONF SUITCOINERS</title>
     <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=IM+Fell+English&display=swap" rel="stylesheet">
     <style>
         :root {
             --black: #000000;
             --white: #ffffff;
-            --gray: #333333;
-            --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         * {
@@ -25,71 +21,32 @@
             background-color: var(--black);
             color: var(--white);
             font-family: 'IM Fell English', serif;
-            line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(255, 255, 255, 0.02) 0px,
-                rgba(255, 255, 255, 0.02) 1px,
-                transparent 1px,
-                transparent 10px
-            );
-            pointer-events: none;
-            z-index: 1;
+            align-items: center;
+            padding: 2rem;
         }
 
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .logo-container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            opacity: 0;
-            animation: fadeIn 1.5s ease-out forwards;
             text-align: center;
         }
 
         .logo-text {
-            font-size: 6rem;
-            text-align: center;
-            font-weight: bold;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--white);
-            text-shadow: 
-                0 0 10px rgba(255,255,255,0.5),
-                0 0 20px rgba(255,255,255,0.3),
-                0 0 30px rgba(255,255,255,0.2);
-            margin-bottom: 40px;
             font-family: 'Metal Mania', cursive;
-            position: relative;
-            display: inline-block;
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
         }
 
         .hero-container {
             width: 100%;
             max-width: 800px;
-            margin: 0 auto 60px;
+            margin: 0 auto;
             opacity: 0;
             animation: fadeIn 2s ease-out forwards;
             animation-delay: 0.5s;
@@ -99,124 +56,71 @@
             width: 100%;
             height: auto;
             display: block;
-            filter: contrast(1.2);
-            -webkit-filter: contrast(1.2);
+            max-width: 100%;
+        }
+
+        .manifesto {
+            margin-top: 4rem;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        .manifesto p {
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .manifesto p:hover {
+            transform: scale(1.05);
         }
 
         @keyframes fadeIn {
-            from { 
+            from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(20px);
             }
-            to { 
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .manifesto {
-            max-width: 800px;
-            margin: 40px auto;
-            font-size: 1.5rem;
-            text-align: center;
-            opacity: 0;
-            animation: fadeIn 2s ease-in-out forwards;
-            animation-delay: 1.5s;
-        }
-
-        .manifesto p {
-            margin-bottom: 30px;
-            position: relative;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-        }
-
-        .manifesto p:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateX(10px);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .manifesto p::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -10px;
-            width: 3px;
-            height: 100%;
-            background: var(--white);
-            transform: scaleY(0);
-            transition: transform 0.3s ease;
-        }
-
-        .manifesto p:hover::before {
-            transform: scaleY(1);
-        }
-
         @media (max-width: 768px) {
-            .logo-container {
-                margin-bottom: 30px;
-                padding: 0 20px;
-            }
-
-            .manifesto {
-                font-size: 1.2rem;
-                padding: 20px;
-            }
-
-            .logo-text {
-                font-size: 4rem;
-            }
-
-            .hero-container {
-                margin-bottom: 40px;
-                padding: 0 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-container {
-                margin-bottom: 20px;
-                padding: 0 15px;
-            }
-
-            .manifesto {
-                font-size: 1rem;
-                padding: 15px;
-            }
-
             .logo-text {
                 font-size: 3rem;
             }
 
-            .hero-container {
-                margin-bottom: 30px;
-                padding: 0 15px;
+            .manifesto {
+                font-size: 1rem;
+            }
+
+            body {
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo-container">
-            <h1 class="logo-text">PODCONF</h1>
-            <div class="hero-container">
-                <img src="suitcoiners.png" alt="SUITCOINERS" class="hero-image">
-            </div>
+        <h1 class="logo-text">PODCONF</h1>
+        <div class="hero-container">
+            <img src="suitcoiners.png" alt="SUITCOINERS" class="hero-image">
         </div>
-
         <div class="manifesto">
             <p>
-                Victims of an overly normie environment, SUITCOINERS slither through conferences and meetups, swaggering in their middle-manager tailoring.
+                In the depths of corporate conformity, we wear our titles like battle scars.
+                Each promotion a testament to our calculated ascension through the ranks.
             </p>
             <p>
-                SUITCOINERS derive immense pride from their prestigious job titles and LinkedIn contacts, yet they always seem to sense that forbidden knowledge lurks just out of reach.
+                We are the SUITCOINERS - where compliance meets conviction.
+                Our boardrooms are our ritual chambers, our presentations our proclamations of power.
             </p>
             <p>
-                To be a SUITCOINER is to be trapped between two worlds—between compliance and conviction.
+                Let them see only our suits, while we forge our path in darkness.
+                For we are the shadow executives, the corporate mystics, the ones who know the true cost of success.
             </p>
         </div>
     </div>
