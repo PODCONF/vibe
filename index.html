@@ -68,11 +68,36 @@
             animation: fadeIn 1.5s ease-out forwards;
         }
 
-        .logo-image {
+        .logo-text {
+            font-size: 5rem;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-shadow: 
+                0 0 10px rgba(255,255,255,0.5),
+                0 0 20px rgba(255,255,255,0.3),
+                0 0 30px rgba(255,255,255,0.2);
+            margin-bottom: 20px;
+            font-family: "Times New Roman", serif;
+            position: relative;
+            display: inline-block;
             width: 100%;
-            height: auto;
-            display: block;
-            filter: contrast(1.1);
+        }
+
+        .logo-text::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTUwIDVDMjUuMiA1IDUgMjUuMiA1IDUwczIwLjIgNDUgNDUgNDUgNDUtMjAuMiA0NS00NVM3NC44IDUgNTAgNXptMCA4MGMtMTkuMyAwLTM1LTE1LjctMzUtMzVzMTUuNy0zNSAzNS0zNSAzNSAxNS43IDM1IDM1LTE1LjcgMzUtMzUgMzV6Ii8+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik02NSA2NUg1NXYxMGgtMTBWNjVIMzV2LTEwaDEwVjQ1aDEwdjEwaDEweiIvPjwvc3ZnPg==');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.8;
         }
 
         @keyframes fadeIn {
@@ -138,6 +163,10 @@
                 font-size: 1.2rem;
                 padding: 20px;
             }
+
+            .logo-text {
+                font-size: 3rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -150,13 +179,17 @@
                 font-size: 1rem;
                 padding: 15px;
             }
+
+            .logo-text {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="logo-container">
-            <img src="images/logo.png" alt="PODCONF SUITCOINERS" class="logo-image">
+            <h1 class="logo-text">SUITCOINERS</h1>
         </div>
 
         <div class="manifesto">
