@@ -9,12 +9,44 @@
         :root {
             --black: #000000;
             --white: #ffffff;
+            --orange: #ff4d00;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: none;
+        }
+
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, var(--orange) 0%, transparent 70%);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: screen;
+            animation: flicker 0.1s infinite;
+        }
+
+        .custom-cursor::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(255, 77, 0, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         body {
@@ -26,6 +58,7 @@
             flex-direction: column;
             align-items: center;
             padding: 2rem;
+            overflow-x: hidden;
         }
 
         .container {
@@ -101,9 +134,96 @@
                 padding: 1rem;
             }
         }
+
+        .cta-section {
+            margin-top: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+            animation-delay: 1.5s;
+        }
+
+        .placeholder-image {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #333 25%, #444 25%, #444 50%, #333 50%, #333 75%, #444 75%, #444 100%);
+            background-size: 20px 20px;
+            margin-bottom: 2rem;
+            border: 2px solid var(--white);
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            font-family: 'Metal Mania', cursive;
+            font-size: 1.5rem;
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            cursor: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: scale(1.05);
+        }
+
+        .cta-button:hover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--orange) 0%, transparent 70%);
+            animation: flame 2s infinite;
+        }
+
+        @keyframes flame {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer-link {
+            margin-top: 4rem;
+            font-family: 'Metal Mania', cursive;
+            font-size: 1.2rem;
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+            animation-delay: 2s;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px var(--orange);
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-link:hover {
+            transform: scale(1.1);
+            text-shadow: 
+                0 0 20px var(--orange),
+                0 0 40px var(--orange);
+            letter-spacing: 2px;
+        }
     </style>
 </head>
 <body>
+    <div class="custom-cursor"></div>
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.querySelector('.custom-cursor');
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    </script>
     <div class="container">
         <h1 class="logo-text">PODCONF</h1>
         <div class="hero-container">
@@ -123,6 +243,11 @@
                 For we are the shadow executives, the corporate mystics, the ones who know the true cost of success.
             </p>
         </div>
+        <div class="cta-section">
+            <div class="placeholder-image"></div>
+            <a href="https://podconf.xyz/product/suitcoiners-suit/" class="cta-button" target="_blank">BECOME SUITCOINER NOW</a>
+        </div>
+        <a href="https://github.com/PODCONF/vibe" class="footer-link" target="_blank">PODCONF IS METAL ♥</a>
     </div>
 </body>
 </html> 
