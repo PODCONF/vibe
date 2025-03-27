@@ -6,7 +6,7 @@
     <title>SUITCOINERS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=IM+Fell+English&display=swap" rel="stylesheet">
     <style>
         :root {
             --black: #000000;
@@ -62,42 +62,39 @@
 
         .logo-container {
             max-width: 800px;
-            margin: 0 auto 60px;
+            margin: 0 auto;
             position: relative;
             opacity: 0;
             animation: fadeIn 1.5s ease-out forwards;
+            text-align: center;
         }
 
         .logo-text {
-            font-size: 5rem;
+            font-size: 6rem;
             text-align: center;
             font-weight: bold;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--white);
             text-shadow: 
                 0 0 10px rgba(255,255,255,0.5),
                 0 0 20px rgba(255,255,255,0.3),
                 0 0 30px rgba(255,255,255,0.2);
-            margin-bottom: 20px;
-            font-family: "Times New Roman", serif;
+            margin-bottom: 40px;
+            font-family: 'Metal Mania', cursive;
             position: relative;
             display: inline-block;
-            width: 100%;
         }
 
-        .logo-text::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 100px;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTUwIDVDMjUuMiA1IDUgMjUuMiA1IDUwczIwLjIgNDUgNDUgNDUgNDUtMjAuMiA0NS00NVM3NC44IDUgNTAgNXptMCA4MGMtMTkuMyAwLTM1LTE1LjctMzUtMzVzMTUuNy0zNSAzNS0zNSAzNSAxNS43IDM1IDM1LTE1LjcgMzUtMzUgMzV6Ii8+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik02NSA2NUg1NXYxMGgtMTBWNjVIMzV2LTEwaDEwVjQ1aDEwdjEwaDEweiIvPjwvc3ZnPg==');
-            background-size: contain;
-            background-repeat: no-repeat;
-            opacity: 0.8;
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto 60px;
+            display: block;
+            filter: contrast(1.1) brightness(1.1);
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+            animation-delay: 0.5s;
         }
 
         @keyframes fadeIn {
@@ -118,7 +115,7 @@
             text-align: center;
             opacity: 0;
             animation: fadeIn 2s ease-in-out forwards;
-            animation-delay: 1s;
+            animation-delay: 1.5s;
         }
 
         .manifesto p {
@@ -155,7 +152,7 @@
 
         @media (max-width: 768px) {
             .logo-container {
-                margin-bottom: 40px;
+                margin-bottom: 30px;
                 padding: 0 20px;
             }
 
@@ -165,13 +162,17 @@
             }
 
             .logo-text {
-                font-size: 3rem;
+                font-size: 4rem;
+            }
+
+            .hero-image {
+                margin-bottom: 40px;
             }
         }
 
         @media (max-width: 480px) {
             .logo-container {
-                margin-bottom: 30px;
+                margin-bottom: 20px;
                 padding: 0 15px;
             }
 
@@ -181,7 +182,11 @@
             }
 
             .logo-text {
-                font-size: 2rem;
+                font-size: 3rem;
+            }
+
+            .hero-image {
+                margin-bottom: 30px;
             }
         }
     </style>
@@ -189,7 +194,8 @@
 <body>
     <div class="container">
         <div class="logo-container">
-            <h1 class="logo-text">SUITCOINERS</h1>
+            <h1 class="logo-text">PODCONF</h1>
+            <img src="images/hero.png" alt="SUITCOINERS - A suited skull in black metal style" class="hero-image">
         </div>
 
         <div class="manifesto">
