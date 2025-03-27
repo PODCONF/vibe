@@ -6,7 +6,7 @@
     <title>SUITCOINERS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=IM+Fell+English&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
     <style>
         :root {
             --black: #000000;
@@ -29,22 +29,22 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             position: relative;
             overflow-x: hidden;
         }
 
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             background: repeating-linear-gradient(
                 45deg,
-                rgba(255, 255, 255, 0.03) 0px,
-                rgba(255, 255, 255, 0.03) 1px,
+                rgba(255, 255, 255, 0.02) 0px,
+                rgba(255, 255, 255, 0.02) 1px,
                 transparent 1px,
                 transparent 10px
             );
@@ -60,51 +60,30 @@
             z-index: 2;
         }
 
-        .logo {
-            font-family: 'Metal Mania', cursive;
-            font-size: 5rem;
-            text-align: center;
-            margin-bottom: 40px;
-            color: var(--white);
-            text-shadow: var(--text-shadow);
-            letter-spacing: 4px;
-            animation: drip 2s ease-in-out;
-        }
-
-        @keyframes drip {
-            0% {
-                transform: translateY(-50px);
-                opacity: 0;
-                letter-spacing: 10px;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-                letter-spacing: 4px;
-            }
-        }
-
-        .skull-container {
-            width: 300px;
-            height: 300px;
-            margin: 40px auto;
+        .logo-container {
+            max-width: 800px;
+            margin: 0 auto 60px;
             position: relative;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
         }
 
-        .skull-image {
+        .logo-image {
             width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="white"/></svg>');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            filter: invert(1);
-            animation: float 4s ease-in-out infinite;
+            height: auto;
+            display: block;
+            filter: contrast(1.1);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        @keyframes fadeIn {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .manifesto {
@@ -117,29 +96,20 @@
             animation-delay: 1s;
         }
 
-        @keyframes fadeIn {
-            from { 
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .manifesto p {
             margin-bottom: 30px;
             position: relative;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
 
         .manifesto p:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             transform: translateX(10px);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .manifesto p::before {
@@ -159,43 +129,34 @@
         }
 
         @media (max-width: 768px) {
-            .logo {
-                font-size: 3rem;
+            .logo-container {
+                margin-bottom: 40px;
+                padding: 0 20px;
             }
 
             .manifesto {
                 font-size: 1.2rem;
                 padding: 20px;
             }
-
-            .skull-container {
-                width: 200px;
-                height: 200px;
-            }
         }
 
         @media (max-width: 480px) {
-            .logo {
-                font-size: 2rem;
+            .logo-container {
+                margin-bottom: 30px;
+                padding: 0 15px;
             }
 
             .manifesto {
                 font-size: 1rem;
-            }
-
-            .skull-container {
-                width: 150px;
-                height: 150px;
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="logo">SUITCOINERS</h1>
-        
-        <div class="skull-container">
-            <div class="skull-image"></div>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="PODCONF SUITCOINERS" class="logo-image">
         </div>
 
         <div class="manifesto">
