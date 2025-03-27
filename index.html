@@ -88,7 +88,7 @@
 
         .hero-container {
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto 60px;
             opacity: 0;
             animation: fadeIn 2s ease-out forwards;
@@ -99,7 +99,8 @@
             width: 100%;
             height: auto;
             display: block;
-            filter: contrast(1.1) brightness(1.1);
+            filter: contrast(1.2);
+            -webkit-filter: contrast(1.2);
         }
 
         @keyframes fadeIn {
@@ -203,24 +204,7 @@
         <div class="logo-container">
             <h1 class="logo-text">PODCONF</h1>
             <div class="hero-container">
-                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="hero-image">
-                    <style>
-                        .skull { fill: white; }
-                        .details { fill: none; stroke: white; stroke-width: 2; }
-                    </style>
-                    <!-- Skull base -->
-                    <path class="skull" d="M100,20 C60,20 30,50 30,90 C30,120 50,140 70,155 L70,170 C70,180 80,190 100,190 C120,190 130,180 130,170 L130,155 C150,140 170,120 170,90 C170,50 140,20 100,20Z"/>
-                    <!-- Eyes -->
-                    <path class="details" d="M70,80 L90,100 M90,80 L70,100"/>
-                    <path class="details" d="M110,80 L130,100 M130,80 L110,100"/>
-                    <!-- Nose -->
-                    <path class="details" d="M95,110 L105,110 L100,120 Z"/>
-                    <!-- Teeth -->
-                    <path class="details" d="M80,140 L80,150 M90,140 L90,150 M100,140 L100,150 M110,140 L110,150 M120,140 L120,150"/>
-                    <!-- Suit details -->
-                    <path class="details" d="M85,170 L115,170 M95,170 L95,180 M105,170 L105,180"/>
-                    <path class="details" d="M70,155 C70,140 130,140 130,155"/>
-                </svg>
+                <img src="suitcoiners.png" alt="SUITCOINERS" class="hero-image">
             </div>
         </div>
 
