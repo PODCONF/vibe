@@ -86,15 +86,19 @@
             display: inline-block;
         }
 
-        .hero-image {
-            max-width: 100%;
-            height: auto;
+        .hero-container {
+            width: 100%;
+            max-width: 600px;
             margin: 0 auto 60px;
-            display: block;
-            filter: contrast(1.1) brightness(1.1);
             opacity: 0;
             animation: fadeIn 2s ease-out forwards;
             animation-delay: 0.5s;
+        }
+
+        .hero-container svg {
+            width: 100%;
+            height: auto;
+            filter: contrast(1.1) brightness(1.1);
         }
 
         @keyframes fadeIn {
@@ -165,8 +169,9 @@
                 font-size: 4rem;
             }
 
-            .hero-image {
+            .hero-container {
                 margin-bottom: 40px;
+                padding: 0 20px;
             }
         }
 
@@ -185,8 +190,9 @@
                 font-size: 3rem;
             }
 
-            .hero-image {
+            .hero-container {
                 margin-bottom: 30px;
+                padding: 0 15px;
             }
         }
     </style>
@@ -195,7 +201,19 @@
     <div class="container">
         <div class="logo-container">
             <h1 class="logo-text">PODCONF</h1>
-            <img src="images/hero.png" alt="SUITCOINERS - A suited skull in black metal style" class="hero-image">
+            <div class="hero-container">
+                <svg viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg">
+                    <text x="50%" y="100" text-anchor="middle" font-family="Metal Mania" font-size="120" fill="white" style="text-transform: uppercase;">SUITCOINERS</text>
+                    <g transform="translate(200, 150)">
+                        <path fill="white" d="M200,0 C89.5,0 0,89.5 0,200 s89.5,200 200,200 s200-89.5 200-200 S310.5,0 200,0z M200,350 c-82.8,0 -150,-67.2 -150,-150 s67.2,-150 150,-150 s150,67.2 150,150 S282.8,350 200,350z"/>
+                        <path fill="white" d="M280,280 H240 v40 h-80 V280 H120 v-80 h40 V160 h80 v40 h40z"/>
+                        <path fill="white" d="M200,400 v200 h-150 v150 h300 v-150 h-150 v-200z"/>
+                        <path fill="white" d="M50,750 h300 v50 h-300z"/>
+                        <rect x="0" y="400" width="50" height="400" fill="white"/>
+                        <rect x="350" y="400" width="50" height="400" fill="white"/>
+                    </g>
+                </svg>
+            </div>
         </div>
 
         <div class="manifesto">
