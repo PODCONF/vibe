@@ -145,13 +145,20 @@
             animation-delay: 1.5s;
         }
 
-        .placeholder-image {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(45deg, #333 25%, #444 25%, #444 50%, #333 50%, #333 75%, #444 75%, #444 100%);
-            background-size: 20px 20px;
+        .product-image {
+            width: 300px;
+            height: auto;
             margin-bottom: 2rem;
-            border: 2px solid var(--white);
+            transition: transform 0.3s ease;
+            filter: contrast(1.1) brightness(1.1);
+        }
+
+        .product-image:hover {
+            transform: scale(1.05);
+        }
+
+        .placeholder-image {
+            display: none;
         }
 
         .cta-button {
@@ -245,7 +252,9 @@
             </p>
         </div>
         <div class="cta-section">
-            <div class="placeholder-image"></div>
+            <a href="https://podconf.xyz/product/suitcoiners-suit/" target="_blank">
+                <img src="https://podconf.xyz/wp-content/uploads/2025/03/unisex-staple-t-shirt-black-heather-front-67e55fd6426f8.jpg" alt="SUITCOINERS T-Shirt" class="product-image">
+            </a>
             <a href="https://podconf.xyz/product/suitcoiners-suit/" class="cta-button" target="_blank">BECOME SUITCOINER NOW</a>
         </div>
         <a href="https://github.com/PODCONF/vibe" class="footer-link" target="_blank">PODCONF IS METAL ♥</a>
